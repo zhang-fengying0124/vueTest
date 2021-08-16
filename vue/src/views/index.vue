@@ -16,7 +16,8 @@
 </template>
 
 <script>
-import axios from 'axios'
+// import axios from 'axios'
+import { getUser } from '@/api/user'
 export default {
   name: 'index',
   data () {
@@ -27,7 +28,16 @@ export default {
     }
   },
   mounted () {
-    axios.get('http://5c92dbfae7b1a00014078e61.mockapi.io/owners').then(response => (this.list = response.data))
+    // axios.get('http://5c92dbfae7b1a00014078e61.mockapi.io/owners').then(response => {
+    //   console.log(response)
+    //   this.list = response.data
+    // }).catch(() => {
+    //   alert('api出错了，请联系管理员。')
+    // })
+    getUser().then(response => {
+      console.log(response)
+      this.list = response
+    })
   },
   computed: {
     maleList () {
